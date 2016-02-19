@@ -1,1 +1,7 @@
-
+<template name="home">	
+		{{#if currentUser}}
+			{{> userIsLoggedOn}}
+		{{else}}
+			{{> userIsNotLoggedOn}}
+		{{/if}}  	
+</template>

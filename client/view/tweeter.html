@@ -1,13 +1,10 @@
+<template name="tweeter">
 <head>
-  <title>tweeter</title>
+	<meta charset="UTF-8">
+	<title>Tweeter</title>
 </head>
-
 <body>
-  <h1>Welcome to Tweeter!</h1>
-	{{#if currentUser}}
-		{{> userIsLoggedOn}}
-	{{else}}
-		{{> userIsNotLoggedOn}}		
-	{{/if}}
-  
+	navigation
+	{{>Template.dynamic template=content}}
 </body>
+</template>
