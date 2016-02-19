@@ -1,0 +1,13 @@
+<head>
+  <title>tweeter</title>
+</head>
+
+<body>
+  <h1>Welcome to Tweeter!</h1>
+	{{#if currentUser}}
+		{{> userIsLoggedOn}}
+	{{else}}
+		{{> userIsNotLoggedOn}}		
+	{{/if}}
+  
+</body>
