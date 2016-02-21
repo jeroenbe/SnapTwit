@@ -1,7 +1,7 @@
 <template name="wall">
 	<ul>
 	{{#each twits}}
-		<li>{{> twit this}}</li>
+		<li><a href="/twit/{{_id}}">{{twit}}</a></li>
 	{{/each}}
 	</ul>
 </template>

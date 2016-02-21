@@ -3,5 +3,8 @@
 -->
 
 <template name="twit">
-	<a href="/twit/{{_id}}">{{twit}}</a>
+	{{#with getTwit}}	
+		<h1>{{twit}}</h1>
+		<h3>by {{user}}</h3>
+	{{/with}}
 </template>
