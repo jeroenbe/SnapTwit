@@ -5,7 +5,12 @@ FlowRouter.route('/', {
 	}
 })
 
-
+FlowRouter.route('/:userId', {
+	name: 'user',
+	action: function(params){
+		BlazeLayout.render('tweeter', {content: 'user'})
+	}
+})
 
 FlowRouter.route('/twit/:twitId', {
 	name: 'twit',

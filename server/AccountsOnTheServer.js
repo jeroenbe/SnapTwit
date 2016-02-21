@@ -3,6 +3,5 @@ Accounts.onCreateUser(function(options, user){
 		followers: [],
 		following: []
 	}
-
 	return user
 })
