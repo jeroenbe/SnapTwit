@@ -6,6 +6,11 @@ Template.user.helpers({
 	userIsFollowing: function() {
 		var d = FollowData.findOne({uID: Meteor.user()._id})		
 		return d.following.includes(this._id)
+	},
+	getUsersTwits: function() {
+		console.log(Twits.find({user: this._id}).fetch())
+		console.log(this)
+		return Twits.find({user: this._id})
 	}
 });
 

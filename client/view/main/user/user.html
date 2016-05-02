@@ -6,5 +6,11 @@
 		{{else}}
 			<button id="follow">follow</button>			
 		{{/if}}
-	{{/with}}
+
+		<ul>
+			{{#each twitFromUser in getUsersTwits}}
+				<li>{{>genericTwit twitFromUser}}</li>
+			{{/each}}
+		</ul>
+	{{/with}}	
 </template>

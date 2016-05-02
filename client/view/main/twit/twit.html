@@ -1,10 +1,14 @@
-<!--
-	This is meant for a general purpose Twit, please keep in mind that the to-display Twit should be resided in the Data Context of this template.
--->
-
 <template name="twit">
 	{{#with getTwit}}	
 		<h1>{{twit}}</h1>
 		<h3>by {{user}}</h3>
 	{{/with}}
+</template>
+
+<!--
+	This is meant for a general purpose Twit, please keep in mind that the to-display Twit should be resided in the Data Context of this template.
+-->
+<template name="genericTwit">
+	<h1>{{twit}}</h1>
+	<h3>by {{user}}</h3>
 </template>
