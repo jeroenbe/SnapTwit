@@ -1,7 +1,5 @@
 Accounts.onCreateUser(function(options, user){
-	user.profile = {
-		followers: [],
-		following: []
-	}
+	FollowData.insert({uID: user._id, folowers: [], following: []});
 	return user
 })
+

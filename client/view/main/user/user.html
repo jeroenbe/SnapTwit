@@ -1,6 +1,10 @@
 <template name="user">
 	{{#with getUser}}
 		{{username}}
-		<button id="follow">follow</button>
+		{{#if userIsFollowing}}
+			<button id="unFollow">unfollow</button>
+		{{else}}
+			<button id="follow">follow</button>			
+		{{/if}}
 	{{/with}}
 </template>
