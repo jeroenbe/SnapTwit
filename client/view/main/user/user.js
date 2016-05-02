@@ -11,11 +11,10 @@ Template.user.helpers({
 
 Template.user.events({
 	'click #follow': function (event) {	
-		var d = FollowData.findOne({uID: Meteor.user()._id})		
-		FollowData.update({_id: d._id}, {$addToSet: {following: this._id}})			
+		Meteor.call('followUser', this._id)			
 	},
 	'click #unFollow': function (event) {
-		var d = FollowData.findOne({uID: Meteor.user()._id})
-		FollowData.update({_id: d._id}, {$pull : {following: this._id}});
+		Meteor.call('unfollowUser', this._id)
 	}
 });
+
