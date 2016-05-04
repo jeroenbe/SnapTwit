@@ -8,8 +8,8 @@
 		{{/if}}
 
 		<ul>
-			{{#each twitFromUser in getUsersTwits}}
-				<li>{{>genericTwit twitFromUser}}</li>
+			{{#each twit in getUsersTwits}}
+				<li>{{>genericTwit twit}}</li>
 			{{/each}}
 		</ul>
 	{{/with}}	

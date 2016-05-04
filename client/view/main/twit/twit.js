@@ -6,5 +6,12 @@ Template.twit.helpers({
 	getTwit: function () {
 		var twitId = FlowRouter.getParam('twitId')
 		return Twits.findOne({_id: twitId})
+	}, 
+
+	getTimeLeft: function () {
+		var twit = Twits.findOne({_id: FlowRouter.getParam('twitId')})
+		date = new Date()
+		console.log(twit.timeLeft.getSeconds() + 3600 - date.getSeconds())
+		return moment.duration(twit.timeLeft.getSeconds() + 3600 - date.getSeconds(), 'seconds').humanize()		
 	}
 });

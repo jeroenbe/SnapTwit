@@ -3,7 +3,7 @@ Template.twitbox.events({
 		event.preventDefault()
 
 		var target = event.target.twitbox
-		Twits.insert({twit: target.value, user: Meteor.user()._id, date: new Date()})
+		Twits.insert({twit: target.value, user: Meteor.user()._id, date: new Date(), timeLeft: new Date()})
 
 		target.value = ""
 	}
