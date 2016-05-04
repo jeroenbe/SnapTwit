@@ -1,2 +1,2 @@
-# Tweeter
-My meteor clone of Twitter
+# SnapTwit
+A meteor hybrid of twitter and snapchat
