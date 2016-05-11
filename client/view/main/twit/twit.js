@@ -11,7 +11,7 @@ Template.twit.helpers({
 	getTimeLeft: function () {
 		var twit = Twits.findOne({_id: FlowRouter.getParam('twitId')})
 		date = new Date()
-		console.log(twit.timeLeft.getSeconds() + 3600 - date.getSeconds())
-		return moment.duration(twit.timeLeft.getSeconds() + 3600 - date.getSeconds(), 'seconds').humanize()		
+		console.log(twit.TTL.getSeconds() + 3600 - date.getSeconds())
+		return moment.duration(twit.TTL.getSeconds() + 3600 - date.getSeconds(), 'seconds').humanize()		
 	}
 });

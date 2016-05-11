@@ -3,7 +3,11 @@ Template.twitbox.events({
 		event.preventDefault()
 
 		var target = event.target.twitbox
-		Twits.insert({twit: target.value, user: Meteor.user()._id, date: new Date(), timeLeft: new Date()})
+		var currentDate = new Date()
+		var TTLTime = new Date(currentDate.getTime() + 10 * 1 * 1000)
+		var twit = {twit: target.value, user: Meteor.user()._id, date: currentDate, TTL: TTLTime}
+
+		Meteor.call('insertTwit', twit)
 
 		target.value = ""
 	}
