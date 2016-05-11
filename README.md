@@ -1,2 +1,2 @@
 # SnapTwit
-A meteor hybrid of twitter and snapchat
+A meteor hybrid of Twitter and Snapchat - Because it makes total sense
