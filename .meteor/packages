@@ -25,3 +25,4 @@ kadira:blaze-layout
 standard-minifier-css
 standard-minifier-js
 momentjs:moment
+reactive-var

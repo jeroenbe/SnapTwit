@@ -1,8 +1,8 @@
 <template name="twit">
 	{{#with getTwit}}	
 		<h1>{{twit}}</h1>
-		<h3>by {{user}}</h3>
-		<p>time: {{getTimeLeft}}</p>
+		<h3>by {{#with getUser user}}{{username}}{{/with}}</h3>
+		<p>{{getTimeLeft}} seconds left</p>
 	{{/with}}
 </template>
 
@@ -11,5 +11,5 @@
 -->
 <template name="genericTwit">
 	<h1>{{twit}}</h1>
-	<h3>by {{user}}</h3>
+	<h3>by {{#with getUser user}}{{username}}{{/with}}</h3>
 </template>

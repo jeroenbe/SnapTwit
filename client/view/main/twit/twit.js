@@ -1,5 +1,5 @@
 Template.twit.onCreated(function(){
-	// this would be the place for a subscription with the help for FlowRouter Reactive API
+	this.TTL = new ReactiveVar(0)
 })
 
 Template.twit.helpers({
@@ -7,11 +7,23 @@ Template.twit.helpers({
 		var twitId = FlowRouter.getParam('twitId')
 		return Twits.findOne({_id: twitId})
 	}, 
-
 	getTimeLeft: function () {
 		var twit = Twits.findOne({_id: FlowRouter.getParam('twitId')})
-		date = new Date()
-		console.log(twit.TTL.getSeconds() + 3600 - date.getSeconds())
-		return moment.duration(twit.TTL.getSeconds() + 3600 - date.getSeconds(), 'seconds').humanize()		
+		var self = Template.instance()
+		updateTTL(twit.TTL, self.TTL)
+
+		var iHandler = Meteor.setInterval(function(){
+			updateTTL(twit.TTL, self.TTL)
+		}, 1000)
+
+		if (self.TTL == 0){
+			Meteor.clearInterval(iHandler)
+		}
+		
+		return self.TTL.get()
 	}
 });
+
+function updateTTL(TTL, rTTL){
+	rTTL.set(TTL.getSeconds() - new Date().getSeconds())
+}
