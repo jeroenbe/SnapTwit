@@ -1,9 +1,9 @@
 <template name="twit">
-	{{#with getTwit}}	
-		<h1>{{twit}}</h1>
-		<h3>by {{#with getUser user}}{{username}}{{/with}}</h3>
-		<p>{{getTimeLeft}} seconds left</p>
-	{{/with}}
+	{{#if getTwit}}
+		{{>genericTwit getTwit}}
+	{{else}}
+		<p>wups, this twit is expired.</p>
+	{{/if}}
 </template>
 
 <!--
@@ -12,4 +12,6 @@
 <template name="genericTwit">
 	<h1>{{twit}}</h1>
 	<h3>by {{#with getUser user}}{{username}}{{/with}}</h3>
+	<p>{{getTimeLeft}} seconds left</p>
+	<button id="retwit">retwit</button>
 </template>
