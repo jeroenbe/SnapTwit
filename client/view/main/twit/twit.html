@@ -12,6 +12,10 @@
 <template name="genericTwit">
 	<h1>{{twit}}</h1>
 	<h3>by {{#with getUser user}}{{username}}{{/with}}</h3>
-	<p>{{getTimeLeft}} seconds left</p>
-	<button id="retwit">retwit</button>
+	<p>{{getTimeLeft}} left</p>
+	{{#if isRetwitted}}
+		<button id="deRetwit">deretwit</button>
+	{{else}}
+		<button id="retwit">retwit</button>
+	{{/if}}
 </template>

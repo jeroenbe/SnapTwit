@@ -1,5 +1,21 @@
 Template.genericTwit.onCreated(function(){
-	this.TTL = new ReactiveVar(0)
+	this.TTL = new ReactiveVar("")
+	var self = this
+
+	updateTTL(self.data.TTL, this.TTL)	
+
+	this.iHandler = Meteor.setInterval(function(){
+		updateTTL(self.data.TTL, self.TTL)
+	}, 1000)
+
+	if (self.data.TTL - new Date() <= 0){
+		console.log("interval cleared")
+		Meteor.clearInterval(self.iHandler)
+	}
+})
+
+Template.genericTwit.onDestroyed(function(){
+	Meteor.clearInterval(this.iHandler)
 })
 
 Template.twit.helpers({
@@ -11,32 +27,25 @@ Template.twit.helpers({
 
 Template.genericTwit.helpers({ 
 	getTimeLeft: function () {
-		var twit = Twits.findOne({_id: FlowRouter.getParam('twitId')})
-		var self = Template.instance()
-		updateTTL(twit.TTL, self.TTL)
-
-		var iHandler = Meteor.setInterval(function(){
-			updateTTL(twit.TTL, self.TTL)
-		}, 1000)
-
-		if (self.TTL == 0){
-			Meteor.clearInterval(iHandler)
-		}
-		
-		return self.TTL.get()
+		return Template.instance().TTL.get()		
+	},
+	isRetwitted: function () {
+		var retwittedBy = this.retwittedBy
+		return retwittedBy ? retwittedBy.includes(Meteor.userId) : false
 	}
 })
 
 Template.genericTwit.events({
 	'click #retwit': function (event) {
 		event.preventDefault()
-
-		console.log(this)
-
 		Meteor.call('retwit',this.userId, this._id)
+	},
+	'click #deRetwit': function (event) {
+		event.preventDefault()
+		Meteor.call('deRetwit', this.userId, this._id)
 	}
-});
+})
 
 function updateTTL(TTL, rTTL){
-	rTTL.set(TTL.getSeconds() - new Date().getSeconds())
+	rTTL.set(moment.duration(TTL - new Date()).humanize())
 }

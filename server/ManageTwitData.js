@@ -1,27 +1,28 @@
-import schedule from 'node-schedule'
+import CronJob from 'node-cron'
+
+new CronJob.schedule('* * * * * *', Meteor.bindEnvironment(() => {
+	Twits.remove({TTL: {$lte: new Date()}})
+}), null, true, 'uct');
+
 
 Meteor.methods({
-	insertTwit: function(twit){
-		Twits.insert(twit)
-		console.log(twit.TTL)
-		console.log(twit.date)
-
-		var s = schedule.scheduleJob(twit.TTL, Meteor.bindEnvironment((err, res) => {			
-			Twits.remove({twit: twit.twit, user: twit.user, date: twit.date})
-		}))
-
-		Schedule.insert({twit: twit._id, task: s})
+	insertTwit: function(twit) {
+		var id = Twits.insert(twit)
 	},
-	addTimeToTwit: function(minutes, twitId){
-		var twit = Twits.find({_id: twitId})
-		var newTime = new Date()
-		newTime.setMinutes(twit.TTL.getMinutes() + minutes)
 
-		var s = Schedule.find({twit: twitId})
-		s.task.cancel()
+	addTimeToTwit: function(minutes, twitId) {
+		var twit = Twits.findOne({_id: twitId})
+		var newTime = new Date(twit.TTL.getTime() + minutes*60000)
 
-		Schedule.update({twit: twitId}, {$set: {task: schedule.scheduleJob(newTime, Meteor.bindEnvironment((err, res) => {
-			Twits.remove({twit: twit.twit, user: twit.user, date: twit.date})
-		}))}})
+		Twits.update({_id: twitId}, {$set: {TTL: newTime}})			
+	}, 
+	retwit: function(userId, twitId) {
+		var twit = Twits.findOne({_id: twitId, retwittedBy: Meteor.userId()})		
+		if(!twit){
+			Twits.update({_id: twitId}, {$addToSet: {retwittedBy: Meteor.userId()}})
+			Meteor.call('addTimeToTwit', 60, twitId)
+		}else{
+			console.log("already retwitted")
+		}
 	}
 })
