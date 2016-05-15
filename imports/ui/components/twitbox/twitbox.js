@@ -20,12 +20,11 @@ Template.twitbox.events({
 			lastActivity: lastActivityDate,
 			TTL: TTLTime, 
 			retwittedBy: [],
+			likedBy: [],
 			amountOfRetwits: amountOfRetwitsCount,
 			amountOfLikes: amountOfLikesCount
 
 		}
-
-
 
 		Meteor.call('insertTwit', twit)
 
