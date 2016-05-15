@@ -27,13 +27,13 @@ Meteor.methods({
 	retwit: function(twitId) {
 		var twit = Twits.findOne({_id: twitId, retwittedBy: Meteor.userId()})		
 		if(!twit){
-			Twits.update({_id: twitId}, {$addToSet: {retwittedBy: Meteor.userId()}, $set : {lastActivity: new Date()}})
+			Twits.update({_id: twitId}, {$addToSet: {retwittedBy: Meteor.userId()}, $set: {lastActivity: new Date()}, $inc: {amountOfRetwits: 1}})
 			Meteor.call('addTimeToTwit', 60, twitId)
 		}
 	},
 
 	deRetwit: function(twitId) {
-		Twits.update({_id: twitId}, {$pull: {retwittedBy: Meteor.userId()}})
+		Twits.update({_id: twitId}, {$pull: {retwittedBy: Meteor.userId()}, $inc: {amountOfRetwits: -1}})
 		Meteor.call('removeTimeFromTwit', 60, twitId)
 	}
 })
