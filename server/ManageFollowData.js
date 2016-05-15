@@ -1,6 +1,6 @@
 Meteor.methods({
 	followUser: function(toFollow){
-		var protagonist = FollowData.findOne({uID: Meteor.user()._id})
+		var protagonist = FollowData.findOne({uID: Meteor.userId()})
 		var subject = FollowData.findOne({uID: toFollow})
 
 		FollowData.update({_id: subject._id}, {$addToSet: {followers: Meteor.user()._id}})
@@ -8,7 +8,7 @@ Meteor.methods({
 	},
 
 	unfollowUser: function(toUnfollow){		
-		var protagonist = FollowData.findOne({uID: Meteor.user()._id})
+		var protagonist = FollowData.findOne({uID: Meteor.userId()})
 		var subject = FollowData.findOne({uID: toUnfollow})
 
 		FollowData.update({_id: subject._id}, {$pull: {followers: Meteor.user()._id}})

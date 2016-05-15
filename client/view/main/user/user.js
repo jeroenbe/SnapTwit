@@ -4,13 +4,11 @@ Template.user.helpers({
 		return Meteor.users.findOne({_id: uID})
 	},
 	userIsFollowing: function() {
-		var d = FollowData.findOne({uID: Meteor.user()._id})		
-		return d.following.includes(this._id)
+		var data = FollowData.findOne({uID: Meteor.userId(), following: this._id})
+		return data
 	},
-	getUsersTwits: function() {
-		console.log(Twits.find({user: this._id}).fetch())
-		console.log(this)
-		return Twits.find({user: this._id})
+	getUsersTwits: function() {		
+		return Twits.find({$or : [{user: this._id}, {retwittedBy: this._id}]}, {"sort" : {lastActivity: -1}}).fetch()
 	}
 });
 

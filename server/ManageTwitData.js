@@ -20,9 +20,8 @@ Meteor.methods({
 		var twit = Twits.findOne({_id: twitId, retwittedBy: Meteor.userId()})		
 		if(!twit){
 			Twits.update({_id: twitId}, {$addToSet: {retwittedBy: Meteor.userId()}})
+			Twits.update({_id: twitId}, {$set : {lastActivity: new Date()}})
 			Meteor.call('addTimeToTwit', 60, twitId)
-		}else{
-			console.log("already retwitted")
 		}
 	}
 })
