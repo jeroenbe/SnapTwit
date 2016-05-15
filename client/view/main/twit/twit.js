@@ -30,19 +30,18 @@ Template.genericTwit.helpers({
 		return Template.instance().TTL.get()		
 	},
 	isRetwitted: function () {
-		var retwittedBy = this.retwittedBy
-		return retwittedBy ? retwittedBy.includes(Meteor.userId) : false
+		return this.retwittedBy ? this.retwittedBy.includes(Meteor.userId()) : false
 	}
 })
 
 Template.genericTwit.events({
 	'click #retwit': function (event) {
 		event.preventDefault()
-		Meteor.call('retwit',this.userId, this._id)
+		Meteor.call('retwit', this._id)
 	},
 	'click #deRetwit': function (event) {
 		event.preventDefault()
-		Meteor.call('deRetwit', this.userId, this._id)
+		Meteor.call('deRetwit', this._id)
 	}
 })
 
