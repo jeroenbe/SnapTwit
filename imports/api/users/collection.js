@@ -1,0 +1,1 @@
+FollowData = new Mongo.Collection('FollowData')

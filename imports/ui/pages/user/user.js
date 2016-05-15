@@ -1,3 +1,9 @@
+import '../../helpers/helpers.js'
+import './user.html'
+
+import { Template } from 'meteor/templating'
+
+
 Template.user.helpers({
 	getUser: function () {
 		var uID = FlowRouter.getParam('userId')

@@ -1,3 +1,7 @@
+import './twitbox.html'
+
+import { Template } from 'meteor/templating'
+
 Template.twitbox.events({
 	'submit': function (event) {
 		event.preventDefault()

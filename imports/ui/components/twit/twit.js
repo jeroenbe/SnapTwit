@@ -1,4 +1,8 @@
 import moment from 'moment'
+import '../../helpers/helpers.js'
+import './twit.html'
+
+import { Template } from 'meteor/templating'
 
 Template.genericTwit.onCreated(function(){
 	this.TTL = new ReactiveVar("")
