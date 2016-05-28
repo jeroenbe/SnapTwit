@@ -1,8 +1,10 @@
-import '../../helpers/helpers.js'
 import './user.html'
 
 import { Template } from 'meteor/templating'
+import { Twits } from '../../../api/twits/collection'
+import { FollowData } from '../../../api/users/collection'
 
+import { getUser } from '../../helpers/helpers'
 
 Template.user.helpers({
 	getUser: function () {

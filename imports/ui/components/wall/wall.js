@@ -1,7 +1,6 @@
-import '../../helpers/helpers.js'
 import './wall.html'
 
-import '../twit/twit.js'
+import { Twits } from '../../../api/twits/collection'
 
 Template.wall.helpers({
 	twits: function () {

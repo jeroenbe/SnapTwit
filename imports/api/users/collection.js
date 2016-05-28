@@ -1,1 +1,1 @@
-FollowData = new Mongo.Collection('FollowData')
+export const FollowData = new Mongo.Collection('FollowData')

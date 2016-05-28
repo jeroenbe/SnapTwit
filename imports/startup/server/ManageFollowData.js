@@ -1,3 +1,5 @@
+import { FollowData } from '../../api/users/collection'
+
 Meteor.methods({
 	followUser: function(toFollow){
 		var protagonist = FollowData.findOne({uID: Meteor.userId()})

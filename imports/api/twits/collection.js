@@ -1,1 +1,1 @@
-Twits = new Mongo.Collection('Twits')
+export const Twits = new Mongo.Collection('Twits')

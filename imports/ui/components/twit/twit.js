@@ -1,15 +1,15 @@
 import moment from 'moment'
-import '../../helpers/helpers.js'
 import './twit.html'
 
 import { Template } from 'meteor/templating'
+import { Twits } from '../../../api/twits/collection'
 
 //GENERIC TWIT
 Template.genericTwit.onCreated(function(){
 	this.TTL = new ReactiveVar("")
 	var self = this
 
-	updateTTL(self.data.TTL, this.TTL)	
+	updateTTL(self.data.TTL, this.TTL)
 
 	this.iHandler = Meteor.setInterval(function(){
 		updateTTL(self.data.TTL, self.TTL)

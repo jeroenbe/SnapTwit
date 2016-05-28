@@ -30,9 +30,11 @@
 	This is meant for a general purpose Twit, please keep in mind that the to-display Twit should be resided in the Data Context of this template.
 -->
 <template name="miniTwit">
+	<div class="card">
 	<a href="/{{user}}">{{#with getUser user}}{{username}}{{/with}}</a>
-	<a href="/twit/{{_id}}">{{twit}}</a>
+	<h3><a href="/twit/{{_id}}">{{twit}}</a></h3>
 	<p>tweeted on: {{date}}</p>
 	<p>retwitted {{amountOfRetwits}} times</p>
 	<p>{{amountOfLikes}} likes</p>
+	</div>
 </template>

@@ -1,4 +1,5 @@
 import CronJob from 'node-cron'
+import { Twits } from '../../api/twits/collection'
 
 new CronJob.schedule('* * * * * *', Meteor.bindEnvironment(() => {
 	Twits.remove({TTL: {$lte: new Date()}})
