@@ -9,7 +9,7 @@ Template.twitbox.events({
 		var target = event.target.twitbox
 		var currentDate = new Date()
 		var lastActivityDate = new Date()
-		var TTLTime = new Date(currentDate.getTime() + 60 * 60 * 1000)
+		var TTLTime = new Date(currentDate.getTime() + 10 * 1 * 1000)
 		var amountOfRetwitsCount = 0
 		var amountOfLikesCount = 0
 

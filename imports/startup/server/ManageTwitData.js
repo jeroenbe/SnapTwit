@@ -1,14 +1,14 @@
-import CronJob from 'node-cron'
+//import CronJob from 'node-cron'
 import { Twits } from '../../api/twits/collection'
 
-new CronJob.schedule('* * * * * *', Meteor.bindEnvironment(() => {
-	Twits.remove({TTL: {$lte: new Date()}})
-}), null, true, 'uct');
+// new CronJob.schedule('* * * * * *', Meteor.bindEnvironment(() => {
+// 	Twits.remove({TTL: {$lte: new Date()}})
+// }), null, true, 'uct');
 
 
 Meteor.methods({
 	insertTwit: function(twit) {
-		var id = Twits.insert(twit)
+		Twits.insert(twit)
 	},
 
 	addTimeToTwit: function(minutes, twitId) {
