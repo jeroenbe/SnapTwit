@@ -1,2 +1,2 @@
-import './routing/router.js'
+import './routing/router.jsx'
 import './accounts/useraccounts-configuration.js'

@@ -27,4 +27,3 @@ reactive-var@1.0.10
 semantic:ui
 remcoder:chronos
 react-meteor-data
-kadira:react-layout
