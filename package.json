@@ -1,0 +1,21 @@
+{
+  "name": "SnapTwit",
+  "version": "1.0.0",
+  "description": "A meteor hybrid of Twitter and Snapchat - Because it makes total sense",
+  "main": "index.js",
+  "dependencies": {
+    "moment": "^2.13.0",
+    "node-cron": "^1.1.1",
+    "node-schedule": "^1.1.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "time": "^0.11.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

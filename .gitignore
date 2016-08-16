@@ -2,3 +2,4 @@
 .meteor/meteorite
 server/kadira.js
 .idea
+/node_modules
