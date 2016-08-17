@@ -3,33 +3,21 @@
  */
 
 import React, { Component, PropTypes } from 'react'
+import { createContainer } from 'meteor/react-meteor-data'
 
-export const Twit = class Twit extends Component {
+import GenericTwit from './GenericTwit'
+
+export default class Twit extends Component {
     render () {
         if(this.props.twit) {
-            return <p>{this.props.twit._id}</p>
+            return <GenericTwit twit={this.props.twit} />
         }else{
             return <p>Wups, this twit is expired</p>
         }
     }
 }
 
-export const GenericTwit = class GenericTwit extends Component {
-    render () {
-
-    }
+Twit.PropTypes = {
+    twit: PropTypes.object,
 }
 
-export const MiniTwit = class MiniTwit extends Component {
-    render () {
-        return (
-            <li>{this.props.twit._id}</li>
-        )
-    }
-}
-
-const twit_prop_types = {
-    twit: PropTypes.object
-}
-
-MiniTwit.PropTypes = GenericTwit.PropTypes = Twit.PropTypes = twit_prop_types
