@@ -10,6 +10,7 @@ import { createContainer } from 'meteor/react-meteor-data'
 //import { ReactiveVar } from 'meteor/reactive-var'
 import { compose } from 'react-komposer'
 
+// NEEDS SOME D3 AWESOMENESS!
 
 const Time = ({time}) => (<div>Time is: {time}</div>);
 

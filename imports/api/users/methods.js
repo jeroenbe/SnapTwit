@@ -12,7 +12,7 @@ Meteor.methods({
     getUserName(id) {
         if(!id) throw new Meteor.Error('no id given')
         const u = Meteor.users.findOne(id)
-        if(!u) throw new Meteor.Error('no user found')
+        if(!u) throw new Meteor.Error('no profile_page found')
 
         return u.username
     }

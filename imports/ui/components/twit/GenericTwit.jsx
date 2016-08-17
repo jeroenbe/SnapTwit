@@ -20,7 +20,7 @@ export default class GenericTwit extends Component {
         return (
             <div>
                 <h1>{this.props.twit.twit}</h1>
-                <h3>by {user.username}</h3>
+                <h3>by <a href={'/' + user._id}>{user.username}</a></h3>
                 <Timer time={this.props.twit.TTL}/>
 
                 {/*
