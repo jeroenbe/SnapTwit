@@ -5,32 +5,36 @@
 import React, {Component} from 'react'
 import { composeWithTracker } from 'react-komposer'
 
-import {ReactiveVar} from 'meteor/reactive-var'
+import {FollowData} from '/imports/api/follow_data/collection'
+
+F = FollowData
 
 const FollowButtonContained = class FollowButtonContained extends Component {
     handleFollowButton() {
+        console.log(Meteor.userId(), this.props.userId)
 
+        this.props.following ? Meteor.call('Unfollow', this.props.userId) : Meteor.call('Follow', this.props.userId)
     }
 
     render () {
         console.log(this.props.following)
         return (
             <section>
-                <button onClick={this.handleFollowButton.bind(this)}>{this.props.following? 'Unfollow': 'Follow'}</button>
+                <button onClick={this.handleFollowButton.bind(this)}>{this.props.following ? 'Unfollow': 'Follow'}</button>
             </section>
 
         )
     }
 }
 
+const followComposer = (props, onData) => {
+    if (Meteor.subscribe('following').ready()) {
+        console.log('changed!')
 
-const followButtonComposer = (props, onData) => {
-    let following = false
-    Meteor.setInterval(() => {
-        following = !following
+        const follow_data = FollowData.findOne({uID: Meteor.userId()}).following
+        const following = _.contains(follow_data, Meteor.userId())
         onData(null, {following})
-    }, 1000)
+    }
 }
 
-
-export default FollowButton = composeWithTracker(followButtonComposer)(FollowButtonContained)
+export default FollowButton = composeWithTracker(followComposer)(FollowButtonContained)
