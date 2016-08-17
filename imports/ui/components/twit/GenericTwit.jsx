@@ -7,6 +7,8 @@ import { createContainer } from 'meteor/react-meteor-data'
 
 import { Meteor } from 'meteor/meteor'
 
+import Timer from '../timer/Timer'
+
 export default class GenericTwit extends Component {
     getUser() {
         return Meteor.users.findOne(this.props.twit.user)
@@ -19,8 +21,10 @@ export default class GenericTwit extends Component {
             <div>
                 <h1>{this.props.twit.twit}</h1>
                 <h3>by {user.username}</h3>
+                <Timer time={this.props.twit.TTL}/>
 
                 {/*
+
                  <p>{{getTimeLeft}} left</p>
                  {{#if isRetwitted}}
                  <button id="deRetwit">deretwit</button>
