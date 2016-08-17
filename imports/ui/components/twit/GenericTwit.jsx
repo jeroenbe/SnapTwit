@@ -8,19 +8,14 @@ import { createContainer } from 'meteor/react-meteor-data'
 import { Meteor } from 'meteor/meteor'
 
 import Timer from '../timer/Timer'
+import User from '../user/User'
 
 export default class GenericTwit extends Component {
-    getUser() {
-        return Meteor.users.findOne(this.props.twit.user)
-    }
-
     render () {
-        const user = this.getUser()
-
         return (
             <div>
                 <h1>{this.props.twit.twit}</h1>
-                <h3>by <a href={'/' + user._id}>{user.username}</a></h3>
+                <User userId={this.props.twit.user} />
                 <Timer time={this.props.twit.TTL}/>
 
                 {/*

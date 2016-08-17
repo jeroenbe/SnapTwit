@@ -8,13 +8,14 @@ import { Twits } from '/imports/api/twits/collection'
 
 import React, { Component, PropTypes } from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
+import {composeWithTracker} from 'react-komposer'
 
 import MiniTwit from '../twit/MiniTwit'
 import Twit from '../twit/TwitR'
 
 T = Twits
 
-export default class Wall extends Component {
+const WallContained = class WallContained extends Component {
     renderTwits () {
         return this.props.twits.map((twit) => {
             return <Twit key={twit._id} twit={twit}/>
@@ -30,14 +31,15 @@ export default class Wall extends Component {
     }
 }
 
-export default createContainer(() => {
-    Meteor.subscribe('allTwits')
-
-    return {
-        twits: Twits.find().fetch()
+const wallComposer = (props, onData) => {
+    if (Meteor.subscribe('allTwits').ready()) {
+        const twits = Twits.find().fetch()
+        onData(null, {twits})
     }
+}
 
-}, Wall)
+export default Wall = composeWithTracker(wallComposer)(WallContained)
+
 
 Wall.PropTypes = {
     twits: PropTypes.array.isRequired
