@@ -11,7 +11,7 @@ import { createContainer } from 'meteor/react-meteor-data'
 import {composeWithTracker} from 'react-komposer'
 
 import MiniTwit from '../twit/MiniTwit'
-import Twit from '../twit/TwitR'
+import Twit from '../twit/Twit'
 
 T = Twits
 

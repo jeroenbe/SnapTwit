@@ -2,12 +2,9 @@
  * Created by Jeroen on 17/08/16.
  */
 
-import { Meteor } from 'meteor/meteor'
-
 import React, {Component, PropTypes} from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
 
-//import { ReactiveVar } from 'meteor/reactive-var'
 import { compose } from 'react-komposer'
 
 // NEEDS SOME D3 AWESOMENESS!
