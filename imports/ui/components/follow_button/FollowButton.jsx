@@ -11,13 +11,10 @@ F = FollowData
 
 const FollowButtonContained = class FollowButtonContained extends Component {
     handleFollowButton() {
-        console.log(Meteor.userId(), this.props.userId)
-
         this.props.following ? Meteor.call('Unfollow', this.props.userId) : Meteor.call('Follow', this.props.userId)
     }
 
     render () {
-        console.log(this.props.following)
         return (
             <section>
                 <button onClick={this.handleFollowButton.bind(this)}>{this.props.following ? 'Unfollow': 'Follow'}</button>
@@ -29,10 +26,7 @@ const FollowButtonContained = class FollowButtonContained extends Component {
 
 const followComposer = (props, onData) => {
     if (Meteor.subscribe('following').ready()) {
-        console.log('changed!')
-
-        const follow_data = FollowData.findOne({uID: Meteor.userId()}).following
-        const following = _.contains(follow_data, Meteor.userId())
+        const f = FollowData.findOne({uID: Meteor.userId()}), follow_data = f ? f.following : [], following = _.contains(follow_data, props.userId)
         onData(null, {following})
     }
 }

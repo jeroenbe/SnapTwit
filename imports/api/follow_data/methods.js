@@ -13,7 +13,6 @@ if(Meteor.isServer){
 
             FollowData.update({_id: subject._id}, {$addToSet: {followers: Meteor.userId()}})
             FollowData.update({_id: protagonist._id}, {$addToSet: {following: toFollow}})
-
         },
 
         Unfollow(toUnfollow){
