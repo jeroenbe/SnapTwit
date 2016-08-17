@@ -3,3 +3,4 @@
 server/kadira.js
 .idea
 /node_modules
+npm-debug.log
