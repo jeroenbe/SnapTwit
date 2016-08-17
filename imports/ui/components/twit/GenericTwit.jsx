@@ -8,6 +8,8 @@ import { Meteor } from 'meteor/meteor'
 
 import Timer from '../timer/Timer'
 import User from '../user/User'
+import RetwitButton from '../buttons/retwit_button/RetwitButton'
+import LikeButton from '../buttons/like_button/LikeButton'
 
 export default class GenericTwit extends Component {
     render () {
@@ -17,8 +19,12 @@ export default class GenericTwit extends Component {
                 <User userId={this.props.twit.user} />
                 <Timer time={this.props.twit.TTL}/>
 
+                <RetwitButton twitId={this.props.twit._id}/><LikeButton twitId={this.props.twit._id}/>
+
                 {/*
-                 <p>{{getTimeLeft}} left</p>
+
+
+
                  {{#if isRetwitted}}
                  <button id="deRetwit">deretwit</button>
                  {{else}}

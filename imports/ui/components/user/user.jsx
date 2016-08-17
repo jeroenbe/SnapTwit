@@ -5,7 +5,7 @@
 import React, {Component, PropTypes} from 'react'
 import { composeWithTracker } from 'react-komposer'
 
-import FollowButton from '../follow_button/FollowButton'
+import FollowButton from '../buttons/follow_button/FollowButton'
 
 const UserContained = class UserContained extends Component {
     render() {

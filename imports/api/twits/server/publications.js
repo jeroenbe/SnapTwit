@@ -7,3 +7,7 @@ import {Twits} from '../collection'
 Meteor.publish('allTwits', function(){
     return Twits.find({TTL: {$gt: Chronos.currentTime()}})
 })
+
+Meteor.publish('twit', function (twitId) {
+    return Twits.find(twitId)
+})
