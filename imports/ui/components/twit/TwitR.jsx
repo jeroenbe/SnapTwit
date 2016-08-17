@@ -21,10 +21,9 @@ export const GenericTwit = class GenericTwit extends Component {
 }
 
 export const MiniTwit = class MiniTwit extends Component {
-
     render () {
         return (
-            <p>{this.props.twit._id}</p>
+            <li>{this.props.twit._id}</li>
         )
     }
 }
