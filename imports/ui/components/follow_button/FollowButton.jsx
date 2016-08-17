@@ -5,15 +5,18 @@
 import React, {Component} from 'react'
 import { composeWithTracker } from 'react-komposer'
 
+import {ReactiveVar} from 'meteor/reactive-var'
+
 const FollowButtonContained = class FollowButtonContained extends Component {
     handleFollowButton() {
 
     }
 
     render () {
+        console.log(this.props.following)
         return (
             <section>
-                <button onClick={this.handleFollowButton.bind(this)}>Follow/Unfollow</button>
+                <button onClick={this.handleFollowButton.bind(this)}>{this.props.following? 'Unfollow': 'Follow'}</button>
             </section>
 
         )
@@ -22,7 +25,11 @@ const FollowButtonContained = class FollowButtonContained extends Component {
 
 
 const followButtonComposer = (props, onData) => {
-    
+    let following = false
+    Meteor.setInterval(() => {
+        following = !following
+        onData(null, {following})
+    }, 1000)
 }
 
 
