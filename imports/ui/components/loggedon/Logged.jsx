@@ -5,11 +5,16 @@
 import React, { Component, PropTypes } from 'react'
 import AccountsUIWrapper from '../accounts/accounts'
 
+import TwitBox from '../twitbox/TwitBoxR'
+import Wall from '../wall/WallR'
+
 export const LoggedOn = class LoggedOn extends Component {
     render() {
         return (
             <div className="logged-on">
                 <AccountsUIWrapper />
+                <TwitBox />
+                <Wall />
             </div>
 
         )
