@@ -6,7 +6,6 @@ import React, {Component, PropTypes} from 'react'
 import { Meteor } from 'meteor/meteor'
 
 import { composeWithTracker } from 'react-komposer'
-import { createContainer } from 'meteor/react-meteor-data'
 
 import { FollowData } from '/imports/api/users/collection'
 

@@ -5,11 +5,11 @@
 import { Meteor } from 'meteor/meteor'
 
 import React, { Component, PropTypes } from 'react'
-import { createContainer } from 'meteor/react-meteor-data'
+import {composeWithTracker} from 'react-komposer'
 
 import  { LoggedOn, NotLoggedOn } from '/imports/ui/components/loggedon/Logged'
 
-export default class Home extends Component {
+const HomeContained = class HomeContained extends Component {
     loggedIn() {
         if (this.props.currentUser) {
             return <LoggedOn />
@@ -23,8 +23,9 @@ export default class Home extends Component {
     }
 }
 
-export default createContainer(() => {
-    return {
-        currentUser: Meteor.user()
-    }
-}, Home)
+const homeComposer = (props, onData) => {
+    const currentUser = Meteor.user()
+    onData(null, {currentUser})
+}
+
+export default Wall = composeWithTracker(homeComposer)(HomeContained)

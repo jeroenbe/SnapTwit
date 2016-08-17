@@ -7,7 +7,6 @@ import { Meteor } from 'meteor/meteor'
 import { Twits } from '/imports/api/twits/collection'
 
 import React, { Component, PropTypes } from 'react'
-import { createContainer } from 'meteor/react-meteor-data'
 import {composeWithTracker} from 'react-komposer'
 
 import MiniTwit from '../twit/MiniTwit'

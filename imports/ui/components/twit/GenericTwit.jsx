@@ -3,7 +3,6 @@
  */
 
 import React, { Component, PropTypes } from 'react'
-import { createContainer } from 'meteor/react-meteor-data'
 
 import { Meteor } from 'meteor/meteor'
 
@@ -19,7 +18,6 @@ export default class GenericTwit extends Component {
                 <Timer time={this.props.twit.TTL}/>
 
                 {/*
-
                  <p>{{getTimeLeft}} left</p>
                  {{#if isRetwitted}}
                  <button id="deRetwit">deretwit</button>
