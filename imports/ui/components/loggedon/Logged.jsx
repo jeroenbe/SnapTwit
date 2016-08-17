@@ -5,8 +5,8 @@
 import React, { Component, PropTypes } from 'react'
 import AccountsUIWrapper from '../accounts/accounts'
 
-import TwitBox from '../twitbox/TwitBoxR'
-import Wall from '../wall/WallR'
+import TwitBox from '../twitbox/TwitBox'
+import Wall from '../wall/Wall'
 
 export const LoggedOn = class LoggedOn extends Component {
     render() {

@@ -2,7 +2,7 @@
  * Created by Jeroen on 17/08/16.
  */
 
-import { Meteor } from 'meteor/meteor'
+import {Meteor} from 'meteor/meteor'
 
 Meteor.methods({
     getUser(id) {
@@ -15,5 +15,5 @@ Meteor.methods({
         if(!u) throw new Meteor.Error('no profile_page found')
 
         return u.username
-    }
+    },
 })
