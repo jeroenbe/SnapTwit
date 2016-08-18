@@ -9,7 +9,6 @@ import {twitComposer} from '../twitComposer'
 
 const LikeButtonContained = class LikeButtonContained extends Component {
     render() {
-        console.log('like', this.props.twit)
         return <button>Like</button>
     }
 }

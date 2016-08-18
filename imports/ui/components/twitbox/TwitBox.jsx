@@ -19,7 +19,7 @@ export default class TwitBox extends Component {
             user: Meteor.user()._id,
             date: currentDate,
             lastActivity: currentDate,
-            TTL: new Date(currentDate.getTime() + 10 * 60 * 1000),
+            TTL: new Date(currentDate.getTime() + 10 * 1 * 1000),
             retwittedBy: [],
             likedBy: [],
             amountOfRetwits: 0,

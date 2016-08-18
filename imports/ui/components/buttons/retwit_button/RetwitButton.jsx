@@ -9,7 +9,6 @@ import {twitComposer} from '../twitComposer'
 
 const RetwitButtonContained = class RetwitButtonContained extends Component {
     render () {
-        console.log(this.props.twit)
         return <button>Retwit</button>
     }
 }

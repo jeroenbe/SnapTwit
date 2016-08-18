@@ -4,8 +4,14 @@
 import {Meteor} from 'meteor/meteor'
 import {Twits} from '../collection'
 
+let cutoffTimestamp = new ReactiveVar();
+
+Meteor.setInterval(function() {
+    cutoffTimestamp.set(Date.now() - 1);
+}, 60000);
+
 Meteor.publish('allTwits', function(){
-    return Twits.find({TTL: {$gt: Chronos.currentTime()}})
+    return Twits.find({TTL: {$gt: new Date()}})
 })
 
 Meteor.publish('twit', function (twitId) {

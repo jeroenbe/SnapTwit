@@ -20,24 +20,6 @@ export default class GenericTwit extends Component {
                 <Timer time={this.props.twit.TTL}/>
 
                 <RetwitButton twitId={this.props.twit._id}/><LikeButton twitId={this.props.twit._id}/>
-
-                {/*
-
-
-
-                 {{#if isRetwitted}}
-                 <button id="deRetwit">deretwit</button>
-                 {{else}}
-                 <button id="retwit">retwit</button>
-                 {{/if}}
-
-                 {{#if isLiked}}
-                 <button id="deLike">delike</button>
-                 {{else}}
-                 <button id="like">like</button>
-                 {{/if}}
-                 */}
-
             </div>
         )
 
