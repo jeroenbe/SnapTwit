@@ -4,8 +4,6 @@
 
 import React, { Component, PropTypes } from 'react'
 
-import { Meteor } from 'meteor/meteor'
-
 import Timer from '../timer/Timer'
 import User from '../user/User'
 import RetwitButton from '../buttons/retwit_button/RetwitButton'
@@ -22,7 +20,6 @@ export default class GenericTwit extends Component {
                 <RetwitButton twitId={this.props.twit._id}/><LikeButton twitId={this.props.twit._id}/>
             </div>
         )
-
     }
 }
 
